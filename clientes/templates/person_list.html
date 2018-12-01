@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Listagem de pessoas</title>
+</head>
+
+<body>
+    <a href="{% url 'logout_url' %}">Sair</a>
+    <a href="{% url 'person_new' %}">Novo cliente</a>
+    {% if persons %}
+    <ul>
+        {% for person in persons %}
+        <li><a href="{% url 'person_update' person.id %}">{{person}}</a>
+            <a href="{% url 'person_delete' person.id %}"> - deletar </a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h1>Nenhum cliente encontrado!</h1>
+    {% endif %}
+
+</body>
+
+</html>
